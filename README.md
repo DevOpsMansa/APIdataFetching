@@ -92,4 +92,4 @@ Now that you know what you are working with, implement the following. These step
     * Test other breeds as well. Not every breed has the same data available, so your code should account for this.
 
     ## Author
-    [x] Eric (Mansa) Marah - Per Scholas
+   Eric (Mansa) Marah - Per Scholas

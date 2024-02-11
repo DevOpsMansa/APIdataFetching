@@ -1,7 +1,7 @@
-import * as Carousel from "./Carousel.js";
+// importation helper
+import * as utilities from "./utilities.js";
 import axios from "axios";
 //const axios = Window.axios;
-
 
 // The breed selection input element.
 const breedSelect = document.getElementById("breedSelect");
@@ -16,56 +16,26 @@ const breedInfoTable = document.getElementById("breedInfo");
 //body element
 const bodyElement = document.querySelector("body")
 
-// Step 0: Store your API key here for reference and easy access.
-const API_KEY = "live_S30DSBzPaRQQFXxA0mjdkXTwpBXwEUFvkol8yBJ3QPnD3UUItjNHtZCg608Yqi3w";
+// // Step 0: Store your API key here for reference and easy access.
+// const API_KEY = "live_HgwZSVchoNtqbngYdbaHxuZM137IEza0Ca2eu0jEVwM9bxU8wJIDXtFiDka4UfQf";
 
-/**
- * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
- */
-/**
- * 4. Change all of your fetch() functions to axios!
- * - axios has already been imported for you within index.js.
- * - If you've done everything correctly up to this point, this should be simple.
- * - If it is not simple, take a moment to re-evaluate your original code.
- * - Hint: Axios has the ability to set default headers. Use this to your advantage
- *   by setting a default header with your API key so that you do not have to
- *   send it manually with all of your requests! You can also set a default base URL!
- */
+//a link to page with another type of fetching
+Utilities.changeFetchingType("Fetch", "script.js")
+
 // Set config defaults when creating the instance
 const instance = axios.create();
 
 // Alter defaults after instance has been created
-instance.defaults.headers.common['x-api-key'] = API_KEY;
+instance.defaults.headers.common['x-api-key'] = Utilities.API_KEY;
 
-/**
- * 5. Add axios interceptors to log the time between request and response to the console.
- * - Hint: you already have access to code that does this!
- * - Add a console.log statement to indicate when requests begin.
- * - As an added challenge, try to do this on your own without referencing the lesson material.
- */
-/**
- * 6. Next, we'll create a progress bar to indicate the request is in progress.
- * - The progressBar element has already been created for you.
- *  - You need only to modify its "width" style property to align with the request progress.
- * - In your request interceptor, set the width of the progressBar element to 0%.
- *  - This is to reset the progress with each request.
- * - Research the axios onDownloadProgress config option.
- * - Create a function "updateProgress" that receives a ProgressEvent object.
- *  - Pass this function to the axios onDownloadProgress config option in your event handler.
- * - console.log your ProgressEvent object within updateProgess, and familiarize yourself with its structure.
- *  - Update the progress of the request using the properties you are given.
- * - Note that we are not downloading a lot of data, so onDownloadProgress will likely only fire
- *   once or twice per request to this API. This is still a concept worth familiarizing yourself
- *   with for future projects.
- */
+instance.defaults.headers.post['Content-Type'] = 'application/json; charset=UTF-8';
 
-function updateProgress(ProgressEvent){
-console.log(ProgressEvent);
-progressBar.style.width = String(ProgressEvent.progress*100)+"%"
-}
+
+//  request intersecptors
 instance.interceptors.request.use((request) => {
     console.log("request begins")
     bodyElement.style.cursor = "progress"
+    // metadata for calcutaing duration of requests sent
     request.metadata = request.metadata || {};
     request.metadata.startTime = new Date().getTime();
     progressBar.style.width = "0%"
@@ -74,6 +44,7 @@ instance.interceptors.request.use((request) => {
     // Do something with request error
     return Promise.reject(error);
 });
+// response interseptors
 instance.interceptors.response.use(
     (response) => {
         console.log("response returns")
@@ -89,16 +60,16 @@ instance.interceptors.response.use(
     });
 
 /**
- * Async function that gets breeds name from TheCat API and sdd them to select element
+ * Async function to get breeds name from TheCat API, adds them to selected element
  */
 (async function initialLoad() {
     //API end point to get breeds
     const url = `https://api.thecatapi.com/v1/breeds`;
-    //get result
+    //get results
     const {data, durationInMS} = await instance.get(url);
     console.log(durationInMS)
     //create options and add them to select
-    createOptions(data);
+    // createOptions(data);
     //add images for first selected breed
     getImages(data[0].id);
 })();
