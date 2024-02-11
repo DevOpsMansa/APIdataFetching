@@ -1,5 +1,7 @@
 import * as bootstrap from "bootstrap";
-import { favourite } from "./index.js";
+// var bootstrap = window.bootstrap;
+// console.log(bootstrap);
+import { favourite } from "script_axios.js";
 
 export function createCarouselItem(imgSrc, imgAlt, imgId) {
   const template = document.querySelector("#carouselItemTemplate");
@@ -13,7 +15,6 @@ export function createCarouselItem(imgSrc, imgAlt, imgId) {
   favBtn.addEventListener("click", () => {
     favourite(imgId);
   });
-
   return clone;
 }
 
@@ -37,9 +38,9 @@ export function start() {
   const multipleCardCarousel = document.querySelector(
     "#carouselExampleControls"
   );
-  if (window.matchMedia("(min-width: 768px)").matches) {
+  if (window.matchMedia("(min-width: 770px)").matches) {
     const carousel = new bootstrap.Carousel(multipleCardCarousel, {
-      interval: false
+      interval: false,
     });
     const carouselWidth = $(".carousel-inner")[0].scrollWidth;
     const cardWidth = $(".carousel-item").width();
@@ -52,7 +53,7 @@ export function start() {
           scrollPosition += cardWidth;
           $("#carouselExampleControls .carousel-inner").animate(
             { scrollLeft: scrollPosition },
-            600
+            610
           );
         }
       }

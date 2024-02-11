@@ -4,7 +4,7 @@ body {
 }
 
 body {
-  background-color: lightgray;
+  background-color: rgba(143, 167, 6, 0.2);
 }
 
 .progress-bar-top {
@@ -13,8 +13,8 @@ body {
   left: 0;
   width: 0%;
   height: 15px;
-  background-color: green;
-  border-bottom: 1px solid black;
+  background-color: rgb(28, 214, 238);
+  border-bottom: 1px solid rgb(212, 6, 6);
 }
 
 .favourite-button {
@@ -24,12 +24,12 @@ body {
   z-index: 99999;
   width: 30px;
   height: 30px;
-  color: lightpink;
+  color: rgb(22, 230, 199);
   cursor: pointer;
   transition: all ease 0.2s;
 }
 .favourite-button:hover {
-  color: red;
+  color: rgb(201, 236, 24);
   width: 36px;
   height: 36px;
   top: 7px;
@@ -41,12 +41,12 @@ body {
 }
 .card {
   margin: 0 0.5em;
-  box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+  box-shadow: 2px 6px 8px 0 rgba(197, 144, 9, 0.18);
   border: none;
 }
 .carousel-control-prev,
 .carousel-control-next {
-  background-color: #e1e1e1;
+  background-color: #b91939;
   width: 6vh;
   height: 6vh;
   border-radius: 50%;
