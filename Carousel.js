@@ -1,7 +1,7 @@
 import * as bootstrap from "bootstrap";
 // var bootstrap = window.bootstrap;
 // console.log(bootstrap);
-import { favourite } from "script_axios.js";
+import { favourite } from "./script.js";
 
 export function createCarouselItem(imgSrc, imgAlt, imgId) {
   const template = document.querySelector("#carouselItemTemplate");

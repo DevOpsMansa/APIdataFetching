@@ -25,20 +25,18 @@
     <!-- Our Styles -->
     <link href="styles.css" rel="stylesheet" />
 
-    <!-- jQuery -->
-    <script
-      src="https://code.jquery.com/jquery-3.6.4.min.js"
-      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-      crossorigin="anonymous"
-    ></script>
+   
+   <!-- jQuery -->
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+       integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
-    <!-- Axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+       <!-- Our Styles -->
+   <link href="./styles.css" rel="stylesheet" />
 
     <!-- Our Scripts -->
-    <script type="module" src="Carousel.js"></script>
-    <script type="module" src="script.js"></script>
-  </head>
+    <script type="module" src="Carousel.js" defer></script>
+   <script type="module" src="./script_axios.js" id="mainJSfile" defer></script>
+</head>
 
   <body>
     <!-- Progress Bar-->
@@ -90,7 +88,7 @@
       id="infoDump"
       class="px-5 py-3 mx-auto"
       style="max-width: 1598px"
-    ></div>
+    >
 <!-- Additional data table -->
 <table class="table table-striped" id="breedInfo">
   <tbody>
@@ -208,7 +206,7 @@
   </tbody>
 </table>
 </div>
-<a href="./index.html" id="change">Change fetch method to Fetch!</a>
+<a href="./index.html" id="change">Change method to Fetch!</a>
 
     <!-- Carousel Item Template -->
     <template id="carouselItemTemplate">
